@@ -7,5 +7,5 @@ export interface IFailureProcess<T> {
 export interface ISuccessProcess<T> {
   success: true
   value: T
-  statusCode: number
+  statuCode: number
 }

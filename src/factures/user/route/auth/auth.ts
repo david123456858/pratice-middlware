@@ -1,14 +1,15 @@
-import { Response, Router } from 'express'
+import { Router } from 'express'
 import { route } from '../../../../config/route/route'
+import { ServiceAuthLogin } from '../../service/auth/login'
+import { AuthController } from '../../controller/auth/auth'
 
 export const routeAuth = (prefix: string): Router => {
-  route.post(`${prefix}/login`, (res: Response) => {
-    res.json('llegue a este lugar que es el login')
-  })
+  const service = new ServiceAuthLogin()
+  const controllerAuthLogin = new AuthController(service)
 
-  route.get(`${prefix}/login`, (res: Response) => {
-    res.json({ message: 'Lleggue hasta login' })
-  })
+  route.post(`${prefix}/login`, controllerAuthLogin.login)
+
+  route.get(`${prefix}/login`, controllerAuthLogin.login)
 
   route.post(`${prefix}/register`, () => ({}))
 
