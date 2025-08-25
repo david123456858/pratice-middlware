@@ -8,7 +8,7 @@ const app = express()
 const PORT = 3000
 
 app.use(routeBase, routeAuth('/auth'))
-app.use(routeBase, routeUser())
+app.use(routeBase, routeUser('/user'))
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Server builder ... ✔')

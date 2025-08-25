@@ -9,7 +9,11 @@ export class MiddlwareJwt {
     this.secreyKey = process.env.SECRET_KEY
   }
 
-  async createToken (): Promise<any> {
+  createToken (): void {
+
+  }
+
+  verifyToken (): void {
 
   }
 }
