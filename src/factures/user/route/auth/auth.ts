@@ -6,6 +6,10 @@ export const routeAuth = (prefix: string): Router => {
     res.json('llegue a este lugar que es el login')
   })
 
+  route.get(`${prefix}/login`, (res: Response) => {
+    res.json({ message: 'Lleggue hasta login' })
+  })
+
   route.post(`${prefix}/register`, () => ({}))
 
   return route
