@@ -1,15 +1,15 @@
 import * as fs from 'fs'
 
-export class fileUtils {
-  constructor (private readonly pathTheFile: string) {
+export abstract class fileUtils {
+  constructor (public pathTheFile: string) {
     this.pathTheFile = pathTheFile
   }
 
-  readFile (): [JSON] {
+  readFile (): [] {
     try {
       const fileReaded = fs.readFileSync(this.pathTheFile)
       const resultToString = fileReaded.toString()
-      const parsedJson: [JSON] = JSON.parse(resultToString)
+      const parsedJson: [] = JSON.parse(resultToString)
       return parsedJson
     } catch (error) {
       return JSON.parse(error as string) // it's no best way for this example
@@ -21,17 +21,6 @@ export class fileUtils {
       fs.writeFileSync(this.pathTheFile, object)
     } catch (error) {
       return [error]
-    }
-  }
-
-  findById (id: string): any {
-    try {
-      const result = this.readFile()
-      result.map(value => console.log(value)
-      )
-      console.log(result)
-    } catch (error) {
-
     }
   }
 }
