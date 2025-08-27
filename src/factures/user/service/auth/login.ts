@@ -15,6 +15,10 @@ export class ServiceAuthLogin {
   login (dto?: string): IFailureProcess<any> | ISuccessProcess<any> {
     try {
       console.log(this.path)
+      dto = ''
+      const result = this.classUtilsFiles.findById(dto)
+      console.log(result)
+
       return SuccessProcess('Llegue señores tiurrrriririri', 200)
     } catch (error) {
       return FailureProcess('', 500)

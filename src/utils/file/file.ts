@@ -5,13 +5,14 @@ export class fileUtils {
     this.pathTheFile = pathTheFile
   }
 
-  readFile (): any {
+  readFile (): [JSON] {
     try {
       const fileReaded = fs.readFileSync(this.pathTheFile)
-      fileReaded.toString()
-      return fileReaded.toJSON()
+      const resultToString = fileReaded.toString()
+      const parsedJson: [JSON] = JSON.parse(resultToString)
+      return parsedJson
     } catch (error) {
-      return []
+      return JSON.parse(error as string) // it's no best way for this example
     }
   }
 
@@ -20,6 +21,17 @@ export class fileUtils {
       fs.writeFileSync(this.pathTheFile, object)
     } catch (error) {
       return [error]
+    }
+  }
+
+  findById (id: string): any {
+    try {
+      const result = this.readFile()
+      result.map(value => console.log(value)
+      )
+      console.log(result)
+    } catch (error) {
+
     }
   }
 }
