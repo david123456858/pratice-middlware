@@ -12,13 +12,13 @@ export abstract class fileUtils {
       const parsedJson: [] = JSON.parse(resultToString)
       return parsedJson
     } catch (error) {
-      return JSON.parse(error as string) // it's no best way for this example
+      return [] // it's no best way for this example
     }
   }
 
   writeFile (object: any): any {
     try {
-      fs.writeFileSync(this.pathTheFile, object)
+      fs.writeFileSync(this.pathTheFile, /* revisar que esto no embarrre el proceso */JSON.stringify(object))
     } catch (error) {
       return [error]
     }

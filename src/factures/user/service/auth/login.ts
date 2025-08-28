@@ -1,14 +1,15 @@
 import { pathData } from '../../../../config/route/route'
 import { IFailureProcess, ISuccessProcess } from '../../../../interfaces/resutl/result'
-import { fileUtils } from '../../../../utils/file/file'
 import { FailureProcess, SuccessProcess } from '../../../../utils/result/result'
+import { ICrudReposity } from '../../../../interfaces/Repository/repository'
 
 import path from 'path'
 import { RepositoryUser } from '../../repository/user'
+import { User } from '../../interface/user'
 
 export class ServiceAuthLogin {
   private readonly path: string
-  private readonly classUtilsFiles: fileUtils
+  private readonly classUtilsFiles: ICrudReposity<User> /* QUE TIPS MEJOR ES CON EL CONTRARO QUE TIENE ESE REPO */
   constructor () {
     this.path = path.join(process.cwd(), pathData.USERS, '/user.json')
     this.classUtilsFiles = new RepositoryUser(this.path)
